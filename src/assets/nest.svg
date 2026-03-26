@@ -1,0 +1,19 @@
+<svg width="120" height="100" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <g transform="translate(0,100) scale(1,-1)">
+    
+    <ellipse cx="60" cy="70" rx="45" ry="18" fill="#8B6B4A"/>
+    
+    <ellipse cx="60" cy="65" rx="42" ry="15" fill="#A07C58"/>
+    
+    <ellipse cx="60" cy="60" rx="38" ry="12" fill="#B78E66"/>
+    
+    <ellipse cx="60" cy="55" rx="34" ry="10" fill="#CFA77A"/>
+    
+    <ellipse cx="60" cy="50" rx="28" ry="8" fill="#E3C094"/>
+    
+    <ellipse cx="60" cy="52" rx="20" ry="5" fill="#F2D3A8" opacity="0.5"/>
+
+  </g>
+
+</svg>

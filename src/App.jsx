@@ -1,17 +1,30 @@
-import Background from "./components/backgrounds/Background";
-//import IntroReveal from "./components/overlays/IntroReveal";
+import { useState } from "react";
 import Navbar from "./components/layout/Navbar";
-//import BirdsLayer from "./components/overlays/BirdsLayer";
 import Hero from "./components/sections/Hero";
+import Background from "./components/backgrounds/Background";
+import CursorBirds from "./components/reveal/CursorBirds";
 
 export default function App() {
+
+  const [revealDone, setRevealDone] = useState(false);
+
   return (
-    <>
+    <div className="relative min-h-screen text-white overflow-hidden">
+
+      {/* Background */}
       <Background />
-      
-      
-      <Navbar />
-      <Hero />
-    </>
+
+      {/* Hero */}
+      <Hero setRevealDone={setRevealDone} />
+
+      {/* Navbar */}
+      <Navbar revealDone={revealDone} />
+
+      {/* Birds */}
+      {revealDone && (
+        <CursorBirds />
+      )}
+
+    </div>
   );
 }

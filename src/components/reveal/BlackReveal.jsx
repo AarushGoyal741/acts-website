@@ -1,16 +1,17 @@
 import { motion } from "framer-motion";
 
-export default function BlackReveal({ onComplete }) {
+export default function BlackReveal({ revealDone, setRevealDone }) {
+  if (revealDone) return null;
+
   return (
     <motion.div
-      className="fixed inset-0 bg-black z-20"
-      initial={{ x: 0 }}
-      animate={{ x: "100vw" }}
-      transition={{
-        duration: 2.6,
-        ease: "easeInOut"
+      className="fixed inset-0 z-[60] bg-black"
+      initial={{ x: "0%" }}
+      animate={{ x: "100%" }}
+      transition={{ duration: 3.6, ease: "easeInOut" }}
+      onAnimationComplete={() => {
+        setRevealDone(true);
       }}
-      onAnimationComplete={onComplete}
     />
   );
 }

@@ -1,50 +1,71 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import Lottie from "lottie-react";
-import birdData from "../../assets/birds.json";
+import birdAnimation from "../../assets/birds.json";
 
-const BIRD_COUNT = 20;
+const BIRD_COUNT = 14;
 
-export default function BirdFlockReveal() {
+export default function BirdFlockReveal({ revealDone }) {
+  const birdRefs = useRef([]);
+
+  const birds = useRef(
+    Array.from({ length: BIRD_COUNT }).map((_, i) => ({
+      id: i,
+      size: 140 + Math.random() * 50,
+      y: (i / (BIRD_COUNT - 1)) * 100 + (Math.random() * 2 - 1),
+      startFrame: Math.floor(Math.random() * 120),
+      phase: Math.random() * Math.PI * 2,
+      duration: 3.8 + Math.random() * 0.6
+    }))
+  );
+
+  useEffect(() => {
+    birdRefs.current.forEach((ref, i) => {
+      if (ref) {
+        ref.setSpeed(0.65);
+        ref.goToAndPlay(birds.current[i].startFrame, true);
+      }
+    });
+  }, []);
+
+  if (revealDone) return null;
+
   return (
-    <motion.div
-      className="fixed top-0 left-0 w-screen h-screen z-30 pointer-events-none"
-      initial={{ x: "-20vw" }}
-      animate={{ x: "120vw" }}
-      transition={{
-        duration: 2.6,
-        ease: "easeInOut"
-      }}
-    >
-      {Array.from({ length: BIRD_COUNT }).map((_, i) => {
-        const yOffset = (i / BIRD_COUNT) * 80 + 10; // spread vertically
-        const scale = 0.8 + Math.random() * 0.25;
-
-        return (
+    <div className="fixed inset-0 z-[70] pointer-events-none">
+      {birds.current.map((bird, i) => (
+        <motion.div
+          key={bird.id}
+          className="absolute"
+          style={{
+            top: `${bird.y}%`,
+            left: "-12%",
+            width: bird.size,
+            height: bird.size
+          }}
+          initial={{ x: 0 }}
+          animate={{ x: "130vw" }}
+          transition={{
+            duration: bird.duration,
+            ease: "linear"
+          }}
+        >
           <motion.div
-            key={i}
-            className="absolute"
-            style={{ top: `${yOffset}vh`, left: `${i * 60}px` }}
-            animate={{
-              y: [0, -8, 0]
-            }}
+            animate={{ y: [0, -8, 0] }}
             transition={{
               duration: 3 + Math.random(),
               repeat: Infinity,
               ease: "easeInOut"
             }}
           >
-            <div style={{ transform: `scale(${scale})` }}>
-                <div className="absolute w-22 h-22">
-              <Lottie
-                animationData={birdData}
-                loop
-                autoplay
-              />
-              </div>
-            </div>
+            <Lottie
+              lottieRef={(el) => (birdRefs.current[i] = el)}
+              animationData={birdAnimation}
+              autoplay
+              loop
+            />
           </motion.div>
-        );
-      })}
-    </motion.div>
+        </motion.div>
+      ))}
+    </div>
   );
 }
