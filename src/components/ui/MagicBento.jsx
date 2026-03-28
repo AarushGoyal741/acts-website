@@ -503,19 +503,84 @@ const MagicBento = ({
             --purple-border: rgba(132, 0, 255, 0.8);
           }
           
+          /* --- MOBILE FIRST LAYOUT --- */
           .card-responsive {
-            grid-template-columns: 1fr;
-            width: 90%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Force 3 columns on mobile! */
+            width: 95%;
             margin: 0 auto;
-            padding: 0.5rem;
+            gap: 0.5rem;
           }
           
-          @media (min-width: 600px) {
-            .card-responsive {
-              grid-template-columns: repeat(2, 1fr);
+          /* THE CLIPPING FIX: Let boxes grow vertically to fit text */
+          .card-responsive .card {
+            aspect-ratio: auto !important; 
+            min-height: max-content !important;
+          }
+          
+          /* Top 3 Cards side-by-side */
+          .card-responsive .card:nth-child(1),
+          .card-responsive .card:nth-child(2),
+          .card-responsive .card:nth-child(3) {
+            grid-column: span 1;
+            padding: 1rem 0.25rem !important; /* Tighter padding so they don't break on narrow phones */
+          }
+          
+          /* Description & Image span full width below the 3 stat cards */
+          .card-responsive .card:nth-child(4),
+          .card-responsive .card:nth-child(5) {
+            grid-column: 1 / span 3;
+          }
+          
+          /* Image needs a fixed height on mobile to look good */
+          .card-responsive .card:nth-child(5) {
+            height: 250px; 
+          }
+          
+          /* Scale down text/icons for mobile so the 3 boxes don't overflow */
+          @media (max-width: 599px) {
+            .card-responsive .card:nth-child(1) h3,
+            .card-responsive .card:nth-child(2) h3,
+            .card-responsive .card:nth-child(3) h3 {
+              font-size: 1.15rem !important; 
+            }
+            .card-responsive .card:nth-child(1) p,
+            .card-responsive .card:nth-child(2) p,
+            .card-responsive .card:nth-child(3) p {
+              font-size: 0.55rem !important;
+              letter-spacing: 0px; 
+            }
+            .card-responsive .card:nth-child(1) svg,
+            .card-responsive .card:nth-child(2) svg,
+            .card-responsive .card:nth-child(3) svg {
+              width: 20px; height: 20px;
             }
           }
           
+          /* --- TABLET LAYOUT --- */
+          @media (min-width: 600px) and (max-width: 1023px) {
+            .card-responsive {
+              grid-template-columns: repeat(2, 1fr);
+            }
+            .card-responsive .card:nth-child(1),
+            .card-responsive .card:nth-child(2),
+            .card-responsive .card:nth-child(3) {
+              grid-column: span 1;
+              padding: 1.25rem !important; /* Restore normal padding */
+            }
+            .card-responsive .card:nth-child(3) {
+              grid-column: 1 / span 2; /* Center the 3rd card nicely on tablets */
+            }
+            .card-responsive .card:nth-child(4),
+            .card-responsive .card:nth-child(5) {
+              grid-column: 1 / span 2;
+            }
+            .card-responsive .card:nth-child(5) {
+              height: 350px; 
+            }
+          }
+          
+          /* --- DESKTOP LAYOUT --- */
           @media (min-width: 1024px) {
             .card-responsive {
               grid-template-columns: repeat(6, 1fr);
@@ -523,23 +588,17 @@ const MagicBento = ({
               min-height: 550px;
             }
             
-            .card-responsive .card {
-              aspect-ratio: auto !important;
-            }
-            
-            /* Top Left: Projects, Events, and Members cards */
             .card-responsive .card:nth-child(1),
             .card-responsive .card:nth-child(2),
             .card-responsive .card:nth-child(3) {
               grid-column: span 1;
+              padding: 1.25rem !important; /* Restore normal padding */
             }
             
-            /* Bottom Left: Description card */
             .card-responsive .card:nth-child(4) {
               grid-column: 1 / span 3;
             }
             
-            /* Right Side: Acts Photo block */
             .card-responsive .card:nth-child(5) {
               grid-column: 4 / span 3;
               grid-row: 1 / span 2;
@@ -547,6 +606,7 @@ const MagicBento = ({
             }
           }
           
+          /* --- BORDER GLOW AND PARTICLES (Unchanged) --- */
           .card--border-glow::after {
             content: '';
             position: absolute;
@@ -564,7 +624,7 @@ const MagicBento = ({
             pointer-events: none;
             opacity: 1;
             transition: opacity 0.3s ease;
-            z-index: 10; /* Ensures borders sit over the image */
+            z-index: 10;
           }
           
           .card--border-glow:hover::after {
@@ -607,20 +667,6 @@ const MagicBento = ({
             line-clamp: 2;
             overflow: hidden;
             text-overflow: ellipsis;
-          }
-          
-          @media (max-width: 599px) {
-            .card-responsive {
-              grid-template-columns: 1fr;
-              width: 90%;
-              margin: 0 auto;
-              padding: 0.5rem;
-            }
-            
-            .card-responsive .card {
-              width: 100%;
-              min-height: 180px;
-            }
           }
         `}
       </style>

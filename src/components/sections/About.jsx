@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import MagicBento from "../ui/MagicBento";
-import CountUp from "../ui/CountUp";
+
 
 
 
@@ -15,7 +15,7 @@ export default function About() {
     <section
       id ="about"
       ref={ref}
-      className="relative py-32 px-6 w-full"
+      className="relative py-16 px-6 w-full"
     >
         {/* Title */}
       <motion.h2

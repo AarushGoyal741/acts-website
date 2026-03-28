@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
+  { label: "Highlights", href: "#highlights" },
   { label: "Team", href: "#team" },
   { label: "Events", href: "#events" },
   { label: "Contact", href: "#contact" },
@@ -12,6 +13,33 @@ const NAV_LINKS = [
 
 export default function Navbar({ revealDone }) {
   const [open, setOpen] = useState(false);
+
+  const handleNav = (e, href) => {
+  e.preventDefault();
+  const id = href.replace("#", "");
+  const target = document.getElementById(id);
+  if (!target) return;
+
+  const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+  const startPosition = window.scrollY;
+  const distance = targetPosition - startPosition;
+  const duration = 800; // ms — adjust for faster/slower
+  let startTime = null;
+
+  const easeInOutCubic = t =>
+    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+  const step = timestamp => {
+    if (!startTime) startTime = timestamp;
+    const elapsed = timestamp - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    window.scrollTo(0, startPosition + distance * easeInOutCubic(progress));
+    if (progress < 1) requestAnimationFrame(step);
+  };
+
+  requestAnimationFrame(step);
+  setOpen(false);
+};
 
   return (
     <AnimatePresence>
@@ -43,12 +71,14 @@ export default function Navbar({ revealDone }) {
 
                 <div className="flex-1 md:hidden" />
 
+                {/* Desktop links */}
                 <div className="flex-1 hidden md:flex justify-center">
                   <div className="w-[70%] max-w-[680px] flex justify-between text-[14px] font-medium">
                     {NAV_LINKS.map(link => (
                       <a
                         key={link.href}
                         href={link.href}
+                        onClick={(e) => handleNav(e, link.href)}
                         className="relative text-[16px] font-medium tracking-wide text-white/80 transition-all duration-300 hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-[1px] after:w-0 after:bg-white/70 after:transition-all after:duration-300 hover:after:w-full"
                       >
                         {link.label}
@@ -57,6 +87,7 @@ export default function Navbar({ revealDone }) {
                   </div>
                 </div>
 
+                {/* Hamburger */}
                 <button
                   className="shrink-0 md:hidden flex flex-col gap-[5px] px-3"
                   onClick={() => setOpen(v => !v)}
@@ -67,6 +98,7 @@ export default function Navbar({ revealDone }) {
                 </button>
               </div>
 
+              {/* Mobile dropdown */}
               <AnimatePresence>
                 {open && (
                   <motion.div
@@ -81,7 +113,7 @@ export default function Navbar({ revealDone }) {
                         <a
                           key={link.href}
                           href={link.href}
-                          onClick={() => setOpen(false)}
+                          onClick={(e) => handleNav(e, link.href)}
                           className="opacity-80 hover:opacity-100 transition"
                         >
                           {link.label}
