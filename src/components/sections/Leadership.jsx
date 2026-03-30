@@ -20,14 +20,13 @@ import adityaFullCardImg from "../../assets/team/GEN SEC 1.png";
 import palakFullCardImg from "../../assets/team/TRESUURER 1.png";
 
 const TEAM_MEMBERS = [
-  { name: "Rishi",  fullCardImg: rishiFullCardImg,  model: rishiModel,  yOffset: 1.6, segmentLength: 1.9, anchorHeight: 8.5 },
-  { name: "Aarush", fullCardImg: aarushFullCardImg, model: aarushModel, yOffset: 1.6, segmentLength: 1.6, anchorHeight: 8.5 }, 
-  { name: "Muskan", fullCardImg: muskanFullCardImg, model: muskanModel, yOffset: 1.6, segmentLength: 1.3, anchorHeight: 6.5 }, 
-  { name: "Shonal", fullCardImg: shonalFullCardImg, model: shonalModel, yOffset: 1.6, segmentLength: 0.8, anchorHeight: 6.3 }, 
-  { name: "Aditya", fullCardImg: adityaFullCardImg, model: adityaModel, yOffset: 1.6, segmentLength: 1.3, anchorHeight: 6.5 }, 
-  { name: "Palak",  fullCardImg: palakFullCardImg,  model: palakModel,  yOffset: 1.6, segmentLength: 1.9, anchorHeight: 8.5 },
+  { name: "Shonal", fullCardImg: shonalFullCardImg, model: shonalModel, yOffset: 1.6, segmentLength: 1.6, anchorHeight: 8.5 },
+  { name: "Muskan", fullCardImg: muskanFullCardImg, model: muskanModel, yOffset: 1.6, segmentLength: 1.9, anchorHeight: 8.5 }, 
+  { name: "Palak",  fullCardImg: palakFullCardImg,  model: palakModel, yOffset: 1.6, segmentLength: 0.9, anchorHeight: 6.5 }, 
+  { name: "Aditya", fullCardImg: adityaFullCardImg, model: adityaModel, yOffset: 1.6, segmentLength: 1.2, anchorHeight: 6.3 }, 
+  { name: "Aarush", fullCardImg: aarushFullCardImg, model: aarushModel, yOffset: 1.6, segmentLength: 1.0, anchorHeight: 6.5 }, 
+  { name: "Rishi",  fullCardImg: rishiFullCardImg,  model: rishiModel, yOffset: 1.6, segmentLength: 1.9, anchorHeight: 8.5 },
 ];
-
 
 const MarqueeTape = ({ text, altText, className, outlineText = false, direction = 1 }) => {
   const repeatedContent = altText
