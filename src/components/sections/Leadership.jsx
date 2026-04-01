@@ -21,10 +21,10 @@ import palakFullCardImg from "../../assets/team/TRESUURER 1.png";
 
 const TEAM_MEMBERS = [
   { name: "Shonal", fullCardImg: shonalFullCardImg, model: shonalModel, yOffset: 1.6, segmentLength: 1.6, anchorHeight: 8.5 },
-  { name: "Muskan", fullCardImg: muskanFullCardImg, model: muskanModel, yOffset: 1.6, segmentLength: 1.9, anchorHeight: 8.5 }, 
-  { name: "Palak",  fullCardImg: palakFullCardImg,  model: palakModel, yOffset: 1.6, segmentLength: 0.9, anchorHeight: 6.5 }, 
-  { name: "Aditya", fullCardImg: adityaFullCardImg, model: adityaModel, yOffset: 1.6, segmentLength: 1.2, anchorHeight: 6.3 }, 
-  { name: "Aarush", fullCardImg: aarushFullCardImg, model: aarushModel, yOffset: 1.6, segmentLength: 1.0, anchorHeight: 6.5 }, 
+  { name: "Muskan", fullCardImg: muskanFullCardImg, model: muskanModel, yOffset: 1.6, segmentLength: 1.9, anchorHeight: 8.5 },
+  { name: "Palak",  fullCardImg: palakFullCardImg,  model: palakModel, yOffset: 1.6, segmentLength: 0.9, anchorHeight: 6.5 },
+  { name: "Aditya", fullCardImg: adityaFullCardImg, model: adityaModel, yOffset: 1.6, segmentLength: 1.2, anchorHeight: 6.3 },
+  { name: "Aarush", fullCardImg: aarushFullCardImg, model: aarushModel, yOffset: 1.6, segmentLength: 1.0, anchorHeight: 6.5 },
   { name: "Rishi",  fullCardImg: rishiFullCardImg,  model: rishiModel, yOffset: 1.6, segmentLength: 1.9, anchorHeight: 8.5 },
 ];
 
@@ -48,7 +48,7 @@ const MarqueeTape = ({ text, altText, className, outlineText = false, direction 
       <motion.div
         initial={{ x: direction === 1 ? "0%" : "-50%" }}
         animate={{ x: direction === 1 ? "-50%" : "0%" }}
-        transition={{ ease: "linear", duration: 40, repeat: Infinity }}
+        transition={{ ease: "linear", duration: 100, repeat: Infinity }}
         className={`text-4xl md:text-6xl font-black uppercase tracking-widest py-0 flex items-center ${
           !altText && outlineText ? "text-transparent [-webkit-text-stroke:2px_gray]" : !altText ? "text-purple-300/50" : ""
         }`}
@@ -66,10 +66,10 @@ export default function Leadership() {
 
   useEffect(() => {
     setIsMounted(true);
-    
+
     // UPDATED: Now checks for < 1024px to safely catch iPhones, Androids, and iPads!
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
@@ -107,29 +107,29 @@ export default function Leadership() {
 
         <div className="mt-8 md:mt-0">
           {!isMounted ? null : isMobile ? (
-            
+
             // ==========================================
             // THIS ONLY RENDERS ON PHONES & IPADS
             // ==========================================
             <div className="flex flex-col items-center space-y-12 pb-24">
               {TEAM_MEMBERS.map((member, index) => (
                 <div key={index} className="w-full max-w-[320px] pt-12 relative z-10">
-                  <img 
-                    src={member.fullCardImg} 
-                    alt={`${member.name}'s ID Card`} 
+                  <img
+                    src={member.fullCardImg}
+                    alt={`${member.name}'s ID Card`}
                     className="w-full h-auto rounded-xl shadow-2xl"
                   />
                 </div>
               ))}
             </div>
-            
+
           ) : (
-            
+
             // ==========================================
             // THIS ONLY RENDERS ON LAPTOPS & DESKTOPS
             // ==========================================
             <LanyardScene members={TEAM_MEMBERS} />
-            
+
           )}
         </div>
 

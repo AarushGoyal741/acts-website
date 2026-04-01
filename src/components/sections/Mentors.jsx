@@ -20,9 +20,9 @@ export default function Mentors() {
       </div>
         {/* Mentors */}
         <div className='mt-16'>
-          <div className="flex justify-around items-center text-center">
-            <img src={neetu_mam} alt="Neetu Mam" className="md:w-100 md:h-100 rounded-2xl object-cover" />
-            <img src={neetu_mam} alt="Neetu Mam" className="md:w-100 md:h-100 rounded-2xl object-cover" />
+          <div className="flex max-md:flex-col max-md:gap-8 justify-around items-center text-center">
+            <img src={neetu_mam} alt="Neetu Mam" className="w-60 h-60 md:w-100 md:h-100 rounded-2xl object-cover" />
+            <img src={neetu_mam} alt="Neetu Mam" className="w-60 h-60 md:w-100 md:h-100 rounded-2xl object-cover" />
 
           </div>
         </div>
