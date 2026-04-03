@@ -30,8 +30,8 @@ export default function App() {
       <div id="about"><About /></div>
       <div id="highlights"><Highlights /></div>
       <div><Mentors /></div>
-      <div><Teams /></div>
       <div id="team"><Leadership /></div>
+      <div><Teams /></div>
       <div><Founders /></div>
       <div><FAQ /></div>
       <div><AskQuestion /></div>

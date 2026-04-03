@@ -17,6 +17,7 @@ export default function Mentors() {
           style={{ fontFamily: "'Jura', sans-serif" }}
         >
           <span className="text-white">OUR</span>
+          <span>
 
           <GradientText
             colors={["#5227FF", "#FF9FFC", "#B19EEF", "#5227FF"]}
@@ -25,8 +26,11 @@ export default function Mentors() {
           >
             MENTORS
           </GradientText>
+          </span>
 
         </h2>
+
+        
 
         <div className="mt-4 h-[1px] w-24 mx-auto bg-gradient-to-r from-transparent via-white/40 to-transparent" />
 

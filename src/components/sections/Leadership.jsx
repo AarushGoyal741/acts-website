@@ -20,12 +20,12 @@ import adityaFullCardImg from "../../assets/team/GEN SEC 1.png";
 import palakFullCardImg from "../../assets/team/TRESUURER 1.png";
 
 const TEAM_MEMBERS = [
-  { name: "Shonal", fullCardImg: shonalFullCardImg, model: shonalModel, yOffset: 1.6, segmentLength: 1.6, anchorHeight: 8.5 },
-  { name: "Muskan", fullCardImg: muskanFullCardImg, model: muskanModel, yOffset: 1.6, segmentLength: 1.9, anchorHeight: 8.5 }, 
-  { name: "Palak",  fullCardImg: palakFullCardImg,  model: palakModel, yOffset: 1.6, segmentLength: 0.9, anchorHeight: 6.5 }, 
-  { name: "Aditya", fullCardImg: adityaFullCardImg, model: adityaModel, yOffset: 1.6, segmentLength: 1.2, anchorHeight: 6.3 }, 
-  { name: "Aarush", fullCardImg: aarushFullCardImg, model: aarushModel, yOffset: 1.6, segmentLength: 1.0, anchorHeight: 6.5 }, 
-  { name: "Rishi",  fullCardImg: rishiFullCardImg,  model: rishiModel, yOffset: 1.6, segmentLength: 1.9, anchorHeight: 8.5 },
+  { name: "Shonal", fullCardImg: shonalFullCardImg, model: shonalModel, yOffset: -1.6, segmentLength: 1.6, anchorHeight: 8.5 },
+  { name: "Muskan", fullCardImg: muskanFullCardImg, model: muskanModel, yOffset: -1.6, segmentLength: 1.9, anchorHeight: 8.5 }, 
+  { name: "Palak",  fullCardImg: palakFullCardImg,  model: palakModel, yOffset: -1.6, segmentLength: 0.9, anchorHeight: 6.5 }, 
+  { name: "Aditya", fullCardImg: adityaFullCardImg, model: adityaModel, yOffset: -1.6, segmentLength: 1.2, anchorHeight: 6.3 }, 
+  { name: "Aarush", fullCardImg: aarushFullCardImg, model: aarushModel, yOffset: -1.4, segmentLength: 1.0, anchorHeight: 6.5 }, 
+  { name: "Rishi",  fullCardImg: rishiFullCardImg,  model: rishiModel, yOffset: -1.6, segmentLength: 1.9, anchorHeight: 8.5 },
 ];
 
 const MarqueeTape = ({ text, altText, className, outlineText = false, direction = 1 }) => {
@@ -78,18 +78,11 @@ export default function Leadership() {
   return (
     <section id="team" className="relative min-h-screen overflow-hidden py-10 flex flex-col items-center">
 
-      <div className="absolute bottom-1/2 left-0 w-full h-3/4 bg-purple-900/20 blur-[150px] pointer-events-none z-0" />
+      
 
-      <motion.h2
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="relative z-30 text-center text-white text-5xl md:text-7xl font-black mb-16 md:mb-12 tracking-tight drop-shadow-lg w-full max-w-[1400px] mx-auto px-6"
-      >
-        OFFICE BEARERS
-      </motion.h2>
 
-      <div className="absolute top-[180px] md:top-[14%] left-0 w-full h-full pointer-events-none z-20 opacity-100">
+
+      <div className="absolute top-[0.01%] md:top-[14%] left-0 w-full h-full pointer-events-none z-20 opacity-100">
         <MarqueeTape
           text="ASSOCIATION OF COMPUTING AND SCIENCE"
           className="rotate-[8deg] md:rotate-[10deg] bg-black backdrop-blur-sm border-y border-purple-10 top-[6%]"
