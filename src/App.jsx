@@ -31,8 +31,8 @@ export default function App() {
       <div id="highlights"><Highlights /></div>
       <div><Mentors /></div>
       <div id="team"><Leadership /></div>
-      <div><Teams /></div>
       <div><Founders /></div>
+      <div><Teams /></div>
       <div><FAQ /></div>
       <div><AskQuestion /></div>
 
