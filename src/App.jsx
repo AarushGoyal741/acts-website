@@ -8,7 +8,7 @@ import Leadership from "./components/sections/Leadership";
 import FAQ from "./components/sections/FAQ";
 import AskQuestion from "./components/sections/AskQuestion";
 import Founders from "./components/sections/Founders";
-
+import Teams from "./components/sections/Teams";
 import Background from "./components/backgrounds/Background";
 import CursorBirds from "./components/reveal/CursorBirds";
 
@@ -30,6 +30,7 @@ export default function App() {
       <div id="about"><About /></div>
       <div id="highlights"><Highlights /></div>
       <div><Mentors /></div>
+      <div><Teams /></div>
       <div id="team"><Leadership /></div>
       <div><Founders /></div>
       <div><FAQ /></div>
