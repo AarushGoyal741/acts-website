@@ -1,152 +1,93 @@
-import React from 'react';
-import GradientText from '../ui/GradientText';
+import { motion } from "framer-motion";
 
-const TEAM_DATA = [
+const allMembers = [
+  "Aaditya Upadhyay", "Aanya Agarwal", "Aayan Khan", "Aayush Sethia", 
+  "Amaan Javed", "Anuj Shukla", "Anurag Singh", "Archit", "Arti", 
+  "Aryan Singla", "Bhavishya", "Dev Dutta", "Gneev Kaur", "Hitesh Tomar", 
+  "Jatin Khandelwal", "Kshiteej Prakash", "Kshitiz Jain", "Kumar Arnav", 
+  "Kushagra Jaiswal", "Mausam Bhuwania", "Meghna Thakran", "Pranjal Rathore", 
+  "Prince Kumar Rai", "Purnima Sukhija", "Rahul Maity", "Rakshita Sati", 
+  "Ridhima Rawat", "Sanket Jain", "Sanyukta Majumdar", "Shaurya Rawat", 
+  "Shreya Anand", "Tanisha Mehta", "Tanmay Mewati", "Umang Kaushik", 
+  "Vipul Joshi", "Yashika", "Yashita Gaur"
+].sort();
 
-  {
-    team: "PR & Outreach",
-    members: [
-      "Arti",
-      "Aayush Sethia",
-      "Anuj Shukla",
-      "Archit",
-      "Pranjal Rathore",
-      "Aaditya Upadhyay",
-      "Bhavishya",
-      "Mausam Bhuwania",
-      "Meghna Thakran",
-      "Ridhima Rawat",
-      "Umang Kaushik",
-    ]
-  },
-  {
-    team: "Design & UI/UX",
-    members: [
-      "Aayan Khan",
-      "Anurag Singh",
-      "Kumar Arnav",
-      "Sanket Jain",
-      "Tanisha Mehta",
-      "Rahul Maity",
-      "Rakshita Sati",
-    ]
-  },
-  {
-    team: "TEAM TECH",
-    members: [
-      "Tanmay Mewati",
-      "Yashita Gaur",
-      "Hitesh Tomar",
-      "Vipul Joshi",
-      "Aanya Agarwal",
-      "Dev Dutta",
-      "Kshiteej Prakash",
-      "Kshitiz Jain",
-      "Sanyukta Majumdar",
-      "Shaurya Rawat",
-      "Shreya Anand",
-    ]
-  },
-
-  {
-    team: "Event\nManagement",
-    members: [
-      "Yashika",
-      "Amaan Javed",
-      "Aryan Singla",
-      "Jatin Khandelwal",
-    ]
-  },
-  {
-    team: "Sponsorship & Outreach",
-    members: [
-      "Gneev Kaur",
-      "Kushagra Jaiswal",
-      "Prince Kumar Rai",
-      "Purnima Sukhija",
-    ]
-  },
-];
-
-const Teams = () => {
-  const middleIndex = Math.floor(TEAM_DATA.length / 2);
+// Helper function to style the first letter of each name
+const CyberName = ({ name }) => {
+  const firstLetter = name.charAt(0);
+  const restOfName = name.slice(1);
 
   return (
-    <section id="teams" className="relative w-full py-20 md:py-24 overflow-hidden">
-
-      <div className="relative z-10 max-w-5xl mx-auto px-4 md:px-6">
-
-        {/* Heading */}
-        <h2
-          className="uppercase text-[clamp(2.5rem,5vw,4rem)] font-semibold tracking-tight flex justify-center items-baseline gap-3"
-          style={{ fontFamily: "'Jura', sans-serif" }}
-        >
-          <span className="text-white">OUR</span>
-          <span>
-
-            <GradientText
-              colors={["#5227FF", "#FF9FFC", "#B19EEF", "#5227FF"]}
-              animationSpeed={1.5}
-              showBorder={false}
-            >
-              teams
-            </GradientText>
-          </span>
-
-        </h2>
-
-        {/* Cards */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
-
-          {TEAM_DATA.map((team, index) => {
-
-            const isMiddleOdd =
-              TEAM_DATA.length % 2 !== 0 &&
-              index === middleIndex;
-
-            return (
-              <div
-                key={team.team}
-                className={`${isMiddleOdd ? "md:col-span-2 md:flex md:justify-center" : ""}`}
-              >
-
-                <div
-                  className={`h-full min-h-[220px] md:min-h-[260px] rounded-xl border border-white/45 bg-black/40 backdrop-blur-sm p-4 
-                  ${isMiddleOdd ? "md:w-[calc(50%-0.75rem)]" : ""}`}
-                >
-
-                  <p
-                    className="text-[13px] md:text-[1.9rem] font-bold uppercase text-center tracking-wide text-[#c28cff]"
-                    style={{ fontFamily: "'Jura', sans-serif" }}
-                  >
-                    {team.team.split('\n').map((line, i) => (
-                      <React.Fragment key={i}>
-                        {line}
-                        <br />
-                      </React.Fragment>
-                    ))}
-                  </p>
-
-                  <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-y-1 text-center text-lg text-white/80">
-                    {team.members.map((member, index) => (
-                      <div key={index}>
-                        {member}
-                      </div>
-                    ))}
-                  </div>
-
-                </div>
-
-              </div>
-            );
-          })}
-
-        </div>
-
-      </div>
-
-    </section>
+    <p 
+      className="text-gray-300 hover:text-white transition-all duration-300 cursor-default tracking-wider"
+      style={{ fontFamily: "Orbitron, sans-serif" }}
+    >
+      {/* The glowing, oversized first letter */}
+      <span className="text-purple-400 font-black text-[1.35em] drop-shadow-[0_0_4px_rgba(168,85,247,0.9)]">
+        {firstLetter}
+      </span>
+      {/* The rest of the name */}
+      <span className="text-[0.85em] opacity-90">
+        {restOfName}
+      </span>
+    </p>
   );
 };
 
-export default Teams;
+export default function Teams() {
+  return (
+    <section id="teams" className="relative w-full py-24 px-6 overflow-hidden z-10">
+      
+      <div className="max-w-6xl mx-auto">
+        
+        {/* --- MAIN UNIFIED CONTAINER --- */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="w-full rounded-2xl bg-black/40 backdrop-blur-md border border-purple-500/30 shadow-[0_0_50px_-12px_rgba(168,85,247,0.2)] p-8 md:p-16 relative overflow-hidden group"
+        >
+          {/* 1. CYBER GRID TEXTURE (Pure CSS) */}
+          {/* This creates a faint dot-matrix background that looks like a digital network grid */}
+          <div className="absolute inset-0 opacity-[0.75] bg-[radial-gradient(circle_at_center,_rgba(168,85,247,0.8)_1px,_transparent_1px)] bg-[length:24px_24px] pointer-events-none" />
+
+          {/* 2. GLOWING ENERGY STREAMS */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-purple-600/20 blur-[80px] rounded-full pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-1/2 h-48 bg-purple-800/10 blur-[100px] rounded-full pointer-events-none transition-transform duration-1000 group-hover:translate-x-full" />
+
+          {/* Title Section */}
+          <div className="text-center mb-16 relative z-10">
+            <h2 
+              className="text-white text-4xl md:text-6xl font-black tracking-widest uppercase drop-shadow-md"
+              style={{ fontFamily: "Orbitron, sans-serif" }}
+            >
+              OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600">TEAM</span>
+            </h2>
+            <div className="mt-6 h-[1px] w-32 mx-auto bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
+          </div>
+
+          {/* Members List - Responsive CSS Columns */}
+          <div className="relative z-10 columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-8">
+            {allMembers.map((member, index) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.02 }} 
+                // Subtle hover effect lifts the name off the grid
+                className="break-inside-avoid mb-5 text-center sm:text-left hover:-translate-y-0.5 transition-transform duration-300"
+              >
+                {/* Rendering the custom styled name component */}
+                <CyberName name={member} />
+              </motion.div>
+            ))}
+          </div>
+
+        </motion.div>
+
+      </div>
+    </section>
+  );
+}
