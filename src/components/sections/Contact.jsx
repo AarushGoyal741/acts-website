@@ -3,6 +3,7 @@ import { useReveal } from "../../context/RevealContext";
 import { Link } from "react-router-dom";
 import { Mail, MapPin } from "lucide-react";
 import { FaYoutube, FaInstagram, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
+import actsLogo from "../../assets/logos/Acts-logo(figmafinal2)_20260115_135241_0000.png";
 
 function SocialIcon({ icon, link, color }) {
   const handleEnter = (e) => {
@@ -79,8 +80,12 @@ export default function Contact() {
           {/* Left */}
           <div className="space-y-3">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-md bg-white/10 flex items-center justify-center font-bold">
-                ACTS
+              <div className="w-20 h-20 rounded-md bg-white/10 flex items-center justify-center overflow-hidden">
+                <img
+                  src={actsLogo}
+                  alt="ACTS Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
             </div>
             <p className="text-white/60 text-sm max-w-xs">

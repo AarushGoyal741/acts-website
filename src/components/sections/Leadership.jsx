@@ -21,11 +21,11 @@ import palakFullCardImg from "../../assets/team/TRESUURER 1.png";
 
 const TEAM_MEMBERS = [
   { name: "Shonal", fullCardImg: shonalFullCardImg, model: shonalModel, yOffset: -1.6, segmentLength: 1.6, anchorHeight: 8.5 },
-  { name: "Muskan", fullCardImg: muskanFullCardImg, model: muskanModel, yOffset: -1.6, segmentLength: 1.9, anchorHeight: 8.5 }, 
+  { name: "Muskan", fullCardImg: muskanFullCardImg, model: muskanModel, yOffset: -1.9, segmentLength: 1.9, anchorHeight: 8.5 }, 
   { name: "Palak",  fullCardImg: palakFullCardImg,  model: palakModel, yOffset: -1.6, segmentLength: 0.9, anchorHeight: 6.5 }, 
   { name: "Aditya", fullCardImg: adityaFullCardImg, model: adityaModel, yOffset: -1.6, segmentLength: 1.2, anchorHeight: 6.3 }, 
   { name: "Aarush", fullCardImg: aarushFullCardImg, model: aarushModel, yOffset: -1.4, segmentLength: 1.0, anchorHeight: 6.5 }, 
-  { name: "Rishi",  fullCardImg: rishiFullCardImg,  model: rishiModel, yOffset: -1.6, segmentLength: 1.9, anchorHeight: 8.5 },
+  { name: "Rishi",  fullCardImg: rishiFullCardImg,  model: rishiModel, yOffset: -2.3, segmentLength: 1.9, anchorHeight: 8.5 },
 ];
 
 const MarqueeTape = ({ text, altText, className, outlineText = false, direction = 1 }) => {
@@ -76,13 +76,9 @@ export default function Leadership() {
   }, []);
 
   return (
-    <section id="team" className="relative min-h-screen overflow-hidden py-10 flex flex-col items-center">
+    <section id="team" className="relative min-h-screen overflow-hidden flex flex-col items-center">
 
-      
-
-
-
-      <div className="absolute top-[0.01%] md:top-[14%] left-0 w-full h-full pointer-events-none z-20 opacity-100">
+      <div className="absolute top-[0.1%] md:top-[14%] left-0 w-full h-full pointer-events-none z-20 opacity-100">
         <MarqueeTape
           text="ASSOCIATION OF COMPUTING AND SCIENCE"
           className="rotate-[8deg] md:rotate-[10deg] bg-black backdrop-blur-sm border-y border-purple-10 top-[6%]"
@@ -96,7 +92,7 @@ export default function Leadership() {
         />
       </div>
 
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 max-sm:py-56">
 
         <div className="mt-8 md:mt-0">
           {!isMounted ? null : isMobile ? (
@@ -104,7 +100,7 @@ export default function Leadership() {
             // ==========================================
             // THIS ONLY RENDERS ON PHONES & IPADS
             // ==========================================
-            <div className="flex flex-col items-center space-y-12 pb-24">
+            <div className="flex flex-col items-center space-y-0 pb-24">
               {TEAM_MEMBERS.map((member, index) => (
                 <div key={index} className="w-full max-w-[320px] pt-12 relative z-10">
                   <img 

@@ -20,7 +20,7 @@ export default function Mentors({ revealKey }) {
   }, [revealDone, isInView]);
 
   return (
-    <section id="mentors" ref={ref} className="relative w-full py-32 overflow-hidden">
+    <section id="mentors" ref={ref} className="relative w-full mt-20 overflow-hidden">
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}

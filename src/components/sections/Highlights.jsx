@@ -37,7 +37,7 @@ export default function Highlights({ revealKey }) {
     <section
       id="highlights"
       ref={ref}
-      className="relative w-full py-5 overflow-hidden"
+      className="relative w-full py-5 overflow-hidden mt-20"
     >
 
       {/* Heading */}

@@ -8,10 +8,10 @@ import harsh from "../../assets/team/harsh.png";
 import mridul from "../../assets/team/mridul.png";
 
 const founders = [
-  { name: "MD SALIK INAM", role: "PRESIDENT", image: salik },
-  { name: "SAMARTH SAXENA", role: "TREASURER", image: samarth },
-  { name: "HARSH KUMAR", role: "SECRETARY", image: harsh },
-  { name: "MRIDUL MAKKAR", role: "VICE PRESIDENT", image: mridul }
+  { name: "MD SALIK INAM", role: "FOUNDER", image: salik },
+  { name: "SAMARTH SAXENA", role: "CO-FOUNDER", image: samarth },
+  { name: "HARSH KUMAR", role: "CO-FOUNDER", image: harsh },
+  { name: "MRIDUL MAKKAR", role: "CO-FOUNDER", image: mridul }
 ];
 
 export default function Founders({ revealKey }) {
@@ -74,7 +74,7 @@ export default function Founders({ revealKey }) {
               </div>
               <div className="w-full ml-12 md:ml-16 pl-[110px] md:pl-[160px] pr-4 py-12 rounded-xl flex flex-col justify-center items-center shadow-2xl border border-purple-500/20 bg-black/40 backdrop-blur-md">
                 <h2
-                  className="text-purple-400 text-2xl sm:text-3xl lg:text-4xl xl:text-[2.5rem] leading-none font-black tracking-widest uppercase text-center w-full"
+                  className="text-purple-400 text-2xl sm:text-3xl lg:text-4xl xl:text-[2.48rem] leading-none font-black tracking-widest uppercase text-center w-full"
                   style={{ fontFamily: "Orbitron" }}
                 >
                   {person.role}
