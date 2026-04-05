@@ -1,45 +1,19 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import GlassSurface from "../ui/GlassSurface";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Highlights", href: "#highlights" },
-  { label: "Team", href: "#team" },
-  { label: "Events", href: "#events" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Highlights", href: "/highlights" },
+  { label: "About", href: "/about" },
+  { label: "Team", href: "/team" },
+  { label: "Events", href: "/events" },
+  { label: "FAQ", href: "/faq" },
 ];
 
 export default function Navbar({ revealDone }) {
   const [open, setOpen] = useState(false);
-
-  const handleNav = (e, href) => {
-  e.preventDefault();
-  const id = href.replace("#", "");
-  const target = document.getElementById(id);
-  if (!target) return;
-
-  const targetPosition = target.getBoundingClientRect().top + window.scrollY;
-  const startPosition = window.scrollY;
-  const distance = targetPosition - startPosition;
-  const duration = 800; // ms — adjust for faster/slower
-  let startTime = null;
-
-  const easeInOutCubic = t =>
-    t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-
-  const step = timestamp => {
-    if (!startTime) startTime = timestamp;
-    const elapsed = timestamp - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    window.scrollTo(0, startPosition + distance * easeInOutCubic(progress));
-    if (progress < 1) requestAnimationFrame(step);
-  };
-
-  requestAnimationFrame(step);
-  setOpen(false);
-};
 
   return (
     <AnimatePresence>
@@ -75,14 +49,19 @@ export default function Navbar({ revealDone }) {
                 <div className="flex-1 hidden md:flex justify-center">
                   <div className="w-[70%] max-w-[680px] flex justify-between text-[14px] font-medium">
                     {NAV_LINKS.map(link => (
-                      <a
+                      <NavLink
                         key={link.href}
-                        href={link.href}
-                        onClick={(e) => handleNav(e, link.href)}
-                        className="relative text-[16px] font-medium tracking-wide text-white/80 transition-all duration-300 hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-[1px] after:w-0 after:bg-white/70 after:transition-all after:duration-300 hover:after:w-full"
+                        to={link.href}
+                        className={({ isActive }) =>
+                          `relative text-[16px] font-medium tracking-wide transition-all duration-300 
+                          ${isActive ? "text-white" : "text-white/80 hover:text-white"} 
+                          after:absolute after:left-0 after:-bottom-1 after:h-[1px] 
+                          after:bg-white/70 after:transition-all after:duration-300
+                          ${isActive ? "after:w-full" : "after:w-0 hover:after:w-full"}`
+                        }
                       >
                         {link.label}
-                      </a>
+                      </NavLink>
                     ))}
                   </div>
                 </div>
@@ -110,14 +89,20 @@ export default function Navbar({ revealDone }) {
                   >
                     <div className="mt-4 flex flex-col gap-4 text-white text-sm px-1">
                       {NAV_LINKS.map(link => (
-                        <a
+                        <NavLink
                           key={link.href}
-                          href={link.href}
-                          onClick={(e) => handleNav(e, link.href)}
-                          className="opacity-80 hover:opacity-100 transition"
+                          to={link.href}
+                          onClick={() => setOpen(false)}
+                          className={({ isActive }) =>
+                            `transition ${
+                              isActive
+                                ? "opacity-100"
+                                : "opacity-80 hover:opacity-100"
+                            }`
+                          }
                         >
                           {link.label}
-                        </a>
+                        </NavLink>
                       ))}
                     </div>
                   </motion.div>

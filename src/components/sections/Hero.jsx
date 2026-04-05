@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import BirdFlockReveal from "../reveal/BirdFlockReveal";
-import BlackReveal from "../reveal/BlackReveal";
+import { useReveal } from "../../context/RevealContext";
 import actsLogo from "../../assets/logos/Acts-logo(figmafinal2)_20260115_135241_0000.png";
 
-export default function Hero({ setRevealDone }) {
-  const [localRevealDone, setLocalRevealDone] = useState(false);
+export default function Hero() {
+  const revealDone = useReveal();
 
   const lineVariant = {
     hidden: { opacity: 0, y: 40 },
@@ -19,18 +17,6 @@ export default function Hero({ setRevealDone }) {
   return (
     <section id="home" className="relative min-h-screen overflow-hidden">
 
-      {/* Bird Reveal */}
-      <BirdFlockReveal revealDone={localRevealDone} />
-
-      {/* Black Reveal */}
-      <BlackReveal
-        revealDone={localRevealDone}
-        setRevealDone={() => {
-          setLocalRevealDone(true);
-          setRevealDone(true);
-        }}
-      />
-
       {/* HERO CONTENT */}
       <div className="relative z-10 flex items-center min-h-screen">
         <div className="max-w-7xl mx-auto px-6 py-32 w-full">
@@ -40,7 +26,7 @@ export default function Hero({ setRevealDone }) {
             <motion.div
               data-bird-target
               initial="hidden"
-              animate={localRevealDone ? "visible" : "hidden"}
+              animate={revealDone ? "visible" : "hidden"}
               variants={{
                 hidden: {},
                 visible: {
@@ -83,7 +69,7 @@ export default function Hero({ setRevealDone }) {
               className="w-full md:w-1/2 flex justify-center"
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
               animate={
-                localRevealDone
+                revealDone
                   ? {
                       opacity: 1,
                       y: [0, -10, 0],
@@ -133,7 +119,7 @@ export default function Hero({ setRevealDone }) {
       {/* SCROLL INDICATOR */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: localRevealDone ? 1 : 0 }}
+        animate={{ opacity: revealDone ? 1 : 0 }}
         transition={{ delay: 1.5 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >

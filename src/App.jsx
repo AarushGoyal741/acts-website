@@ -1,40 +1,59 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+
 import Navbar from "./components/layout/Navbar";
-import Hero from "./components/sections/Hero";
-import About from "./components/sections/About";
-import Highlights from "./components/sections/Highlights";
-import Mentors from "./components/sections/Mentors";
-import Leadership from "./components/sections/Leadership";
-import FAQ from "./components/sections/FAQ";
-import AskQuestion from "./components/sections/AskQuestion";
-import Founders from "./components/sections/Founders";
-import Teams from "./components/sections/Teams";
 import Background from "./components/backgrounds/Background";
-import CursorBirds from "./components/reveal/CursorBirds";
+import ScrollToTop from "./components/layout/ScrollToTop";
+
+import BirdFlockReveal from "./components/reveal/BirdFlockReveal";
+import BlackReveal from "./components/reveal/BlackReveal";
+
+import { RevealProvider } from "./context/RevealContext";
+
+import Home from "./pages/Home";
+import Highlights from "./pages/Highlights";
+import About from "./pages/About";
+import Team from "./pages/Team";
+import Events from "./pages/Events";
+import FAQ from "./pages/FAQ";
 
 export default function App() {
   const [revealDone, setRevealDone] = useState(false);
+  const [revealKey, setRevealKey] = useState(0);
+  const location = useLocation();
+  const isFirstMount = useRef(true);
+
+  useEffect(() => {
+    if (isFirstMount.current) {
+      isFirstMount.current = false;
+      return;
+    }
+    setRevealDone(false);
+    setRevealKey(k => k + 1);
+  }, [location.pathname]);
 
   return (
     <div className="relative min-h-screen text-white">
 
       <Background />
 
-      {/* Hero already has id="home" inside it — no wrapper needed */}
-      <Hero setRevealDone={setRevealDone} />
+      <BirdFlockReveal key={`bird-${revealKey}`} revealDone={revealDone} />
+      <BlackReveal key={`black-${revealKey}`} revealDone={revealDone} setRevealDone={setRevealDone} />
 
       <Navbar revealDone={revealDone} />
 
-      {/* revealDone && <CursorBirds />     remove from comment to add cursor_birds*/}
+      <ScrollToTop />
 
-      <div id="about"><About /></div>
-      <div id="highlights"><Highlights /></div>
-      <div><Mentors /></div>
-      <div id="team"><Leadership /></div>
-      <div><Founders /></div>
-      <div><Teams /></div>
-      <div><FAQ /></div>
-      <div><AskQuestion /></div>
+      <RevealProvider value={revealDone}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/highlights" element={<Highlights revealKey={revealKey} />} />
+          <Route path="/about" element={<About revealKey={revealKey} />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/faq" element={<FAQ />} />
+        </Routes>
+      </RevealProvider>
 
     </div>
   );

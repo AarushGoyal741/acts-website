@@ -9,9 +9,7 @@ export default function BlackReveal({ revealDone, setRevealDone }) {
       initial={{ x: "0%" }}
       animate={{ x: "100%" }}
       transition={{ duration: 3.6, ease: "easeInOut" }}
-      onAnimationComplete={() => {
-        setRevealDone(true);
-      }}
+      onAnimationComplete={() => setRevealDone(true)}
     />
   );
 }

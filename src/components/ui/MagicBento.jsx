@@ -719,7 +719,8 @@ const MagicBento = ({
                             direction="up"
                             duration={1.5}
                             className="count-up-text"
-                            startWhen={true}
+                            startWhen={!disableAnimations}
+                            delay={1}
                           />
                           {card.suffix}
                         </>
