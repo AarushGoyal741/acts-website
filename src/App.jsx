@@ -12,7 +12,6 @@ import { RevealProvider } from "./context/RevealContext";
 
 import Home from "./pages/Home";
 import Highlights from "./pages/Highlights";
-import About from "./pages/About";
 import Team from "./pages/Team";
 import Events from "./pages/Events";
 import FAQ from "./pages/FAQ";
@@ -48,7 +47,6 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/highlights" element={<Highlights revealKey={revealKey} />} />
-          <Route path="/about" element={<About revealKey={revealKey} />} />
           <Route path="/team" element={<Team />} />
           <Route path="/events" element={<Events />} />
           <Route path="/faq" element={<FAQ />} />

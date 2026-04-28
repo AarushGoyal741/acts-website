@@ -105,7 +105,7 @@ export default function Hero() {
                   <img
                     src={actsLogo}
                     alt="ACTS Logo"
-                    className="w-4/5 h-4/5 object-contain"
+                    className="w-4/5 h-4/5 object-contain rounded-2xl"
                   />
                 </div>
 
