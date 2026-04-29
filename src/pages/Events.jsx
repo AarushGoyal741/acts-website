@@ -154,6 +154,11 @@ function parseUpcomingEvent(row) {
     style:         String(row.style         || "technovate"),
     note:          String(row.note          || ""),
     noteHighlight: String(row.noteHighlight || ""),
+    // Registration config — columns: formMode, minTeam, maxTeam
+    // formMode: "workshop" | "solo" | "team"
+    formMode:      String(row.formMode      || "solo"),
+    minTeam:       parseInt(row.minTeam)    || 2,
+    maxTeam:       parseInt(row.maxTeam)    || 5,
   };
 }
 
@@ -213,9 +218,26 @@ function TechnovateCard({ event }) {
       </div>
 
       <div className="mt-auto">
-        <button className="w-full rounded-xl border border-purple-400/50 bg-black/30 py-3.5 text-white font-bold tracking-[0.12em] text-sm hover:bg-purple-500/15 hover:border-purple-400/70 transition-all duration-300 flex items-center justify-center gap-2">
-          {event.button} <span className="text-purple-400">{event.buttonIcon}</span>
-        </button>
+        {event.button === "REGISTER NOW" ? (
+          <Link
+            to="/register"
+            state={{
+              eventName: event.title,
+              eventDate: event.date,
+              eventVenue: event.venue,
+              formMode:  event.formMode,
+              minTeam:   event.minTeam,
+              maxTeam:   event.maxTeam,
+            }}
+            className="w-full rounded-xl border border-purple-400/50 bg-black/30 py-3.5 text-white font-bold tracking-[0.12em] text-sm hover:bg-purple-500/15 hover:border-purple-400/70 transition-all duration-300 flex items-center justify-center gap-2"
+          >
+            {event.button} <span className="text-purple-400">{event.buttonIcon}</span>
+          </Link>
+        ) : (
+          <button className="w-full rounded-xl border border-purple-400/50 bg-black/30 py-3.5 text-white font-bold tracking-[0.12em] text-sm hover:bg-purple-500/15 hover:border-purple-400/70 transition-all duration-300 flex items-center justify-center gap-2">
+            {event.button} <span className="text-purple-400">{event.buttonIcon}</span>
+          </button>
+        )}
       </div>
     </div>
   );

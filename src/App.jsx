@@ -15,6 +15,7 @@ import Highlights from "./pages/Highlights";
 import Team from "./pages/Team";
 import Events from "./pages/Events";
 import FAQ from "./pages/FAQ";
+import Register from "./pages/RegisterPage";
 
 export default function App() {
   const [revealDone, setRevealDone] = useState(false);
@@ -49,6 +50,7 @@ export default function App() {
           <Route path="/highlights" element={<Highlights revealKey={revealKey} />} />
           <Route path="/team" element={<Team />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/faq" element={<FAQ />} />
         </Routes>
       </RevealProvider>
