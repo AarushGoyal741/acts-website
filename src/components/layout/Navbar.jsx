@@ -11,6 +11,38 @@ const NAV_LINKS = [
   { label: "FAQ", href: "/faq" },
 ];
 
+function NavItem({ href, label }) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <NavLink
+      to={href}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className={({ isActive }) =>
+        `relative flex flex-col items-center text-[16px] font-medium tracking-wide transition-all duration-300 ${
+          isActive || hovered ? "text-white" : "text-white/80"
+        }`
+      }
+    >
+      {({ isActive }) => (
+        <>
+          {label}
+          <span
+            style={{
+              display: "block",
+              height: "3px",
+              backgroundColor: "rgba(255,255,255,0.7)",
+              transition: "width 0.3s ease",
+              width: isActive || hovered ? "100%" : "0%",
+            }}
+          />
+        </>
+      )}
+    </NavLink>
+  );
+}
+
 export default function Navbar({ revealDone }) {
   const [open, setOpen] = useState(false);
 
@@ -23,7 +55,7 @@ export default function Navbar({ revealDone }) {
           exit={{ y: -80, opacity: 0 }}
           transition={{
             duration: 0.7,
-            ease: [0.22, 1, 0.36, 1]
+            ease: [0.22, 1, 0.36, 1],
           }}
           className="fixed top-5 left-1/2 -translate-x-1/2 z-50"
         >
@@ -46,21 +78,9 @@ export default function Navbar({ revealDone }) {
 
                 {/* Desktop links */}
                 <div className="flex-1 hidden md:flex justify-center">
-                  <div className="w-[70%] max-w-[680px] flex justify-between text-[14px] font-medium">
+                  <div className="w-[70%] max-w-[680px] flex justify-between">
                     {NAV_LINKS.map(link => (
-                      <NavLink
-                        key={link.href}
-                        to={link.href}
-                        className={({ isActive }) =>
-                          `relative text-[16px] font-medium tracking-wide transition-all duration-300 
-                          ${isActive ? "text-white" : "text-white/80 hover:text-white"} 
-                          after:absolute after:left-0 after:-bottom-1 after:h-[1px] 
-                          after:bg-white/70 after:transition-all after:duration-300
-                          ${isActive ? "after:w-full" : "after:w-0 hover:after:w-full"}`
-                        }
-                      >
-                        {link.label}
-                      </NavLink>
+                      <NavItem key={link.href} href={link.href} label={link.label} />
                     ))}
                   </div>
                 </div>
@@ -93,11 +113,9 @@ export default function Navbar({ revealDone }) {
                           to={link.href}
                           onClick={() => setOpen(false)}
                           className={({ isActive }) =>
-                            `transition ${
-                              isActive
-                                ? "opacity-100"
-                                : "opacity-80 hover:opacity-100"
-                            }`
+                            isActive
+                              ? "opacity-100 transition"
+                              : "opacity-80 hover:opacity-100 transition"
                           }
                         >
                           {link.label}

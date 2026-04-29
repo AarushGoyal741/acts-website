@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import LanyardScene from "../ui/Lanyard";
+import linkedinLogo from "../../assets/logos/91020.png";
 
 // Desktop 3D models
 import rishiModel from "../../assets/team/rishi.glb";
@@ -25,6 +26,7 @@ const TEAM_MEMBERS = [
     role: "Chairperson",
     image: shonalImg,
     model: shonalModel,
+    linkedin: "https://www.linkedin.com/in/shonal-dhauni-99819131a/",
     yOffset: -1.6,
     segmentLength: 1.6,
     anchorHeight: 8.5,
@@ -34,6 +36,7 @@ const TEAM_MEMBERS = [
     role: "Vice Chairperson",
     image: muskanImg,
     model: muskanModel,
+    linkedin: "https://www.linkedin.com/in/muskan-narang-41939a312/",
     yOffset: -1.9,
     segmentLength: 1.9,
     anchorHeight: 8.5,
@@ -43,6 +46,7 @@ const TEAM_MEMBERS = [
     role: "Treasurer",
     image: palakImg,
     model: palakModel,
+    linkedin: "https://www.linkedin.com/in/palak-dev-2b5235325/",
     yOffset: -1.6,
     segmentLength: 0.9,
     anchorHeight: 6.5,
@@ -52,6 +56,7 @@ const TEAM_MEMBERS = [
     role: "General Secretary",
     image: adityaImg,
     model: adityaModel,
+    linkedin: "https://www.linkedin.com/in/its-adityasingh/",
     yOffset: -1.6,
     segmentLength: 1.2,
     anchorHeight: 6.3,
@@ -61,6 +66,7 @@ const TEAM_MEMBERS = [
     role: "Web Chair",
     image: aarushImg,
     model: aarushModel,
+    linkedin: "https://www.linkedin.com/in/aarush-goyal-48406231a/",
     yOffset: -1.4,
     segmentLength: 1.0,
     anchorHeight: 6.5,
@@ -70,6 +76,7 @@ const TEAM_MEMBERS = [
     role: "Media Head",
     image: rishiImg,
     model: rishiModel,
+    linkedin: "https://www.linkedin.com/in/rishi-raj-goel-a77350326/",
     yOffset: -2.3,
     segmentLength: 1.9,
     anchorHeight: 8.5,
@@ -122,27 +129,49 @@ const MobileMemberCard = ({ member, index }) => {
         reverse ? "flex-row-reverse" : "flex-row"
       }`}
     >
-      <div className="w-[42%] min-w-[155px] max-w-[155px] relative z-10">
-        <div className="rounded-[22px] overflow-hidden shadow-4xl bg-transparent">
+      {/* Clickable Photo */}
+      <a
+        href={member.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-[42%] min-w-[155px] max-w-[155px] relative z-10 block"
+      >
+        <div className="rounded-[22px] overflow-hidden shadow-4xl bg-transparent transition-all duration-300 active:scale-95">
           <img
             src={member.image}
             alt={member.name}
             className="w-full h-[220px] object-contain object-center"
           />
         </div>
-      </div>
+      </a>
 
       <motion.div
         initial={{ opacity: 0, x: reverse ? 80 : -80 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
-        className={`flex-1 ${reverse ? "pr-3 -mr-12" : "pl-3 -ml-12"} relative z-0`}>
+        transition={{
+          duration: 0.7,
+          ease: "easeOut",
+          delay: 0.15,
+        }}
+        className={`flex-1 ${
+          reverse ? "pr-3 -mr-12" : "pl-3 -ml-12"
+        } relative z-0`}
+      >
         <div className="rounded-[20px] border-2 border-white/40 bg-gradient-to-r from-[#4c2cff]/30 via-[#8b3dff]/20 to-[#111]/70 backdrop-blur-md px-10 py-6 shadow-[0_0_30px_rgba(139,61,255)] h-[160px] w-full flex flex-col justify-center">
           
-          <h3 className="text-[1.35rem] font-bold text-white leading-tight tracking-tight uppercase">
-            {member.name}
-          </h3>
+          {/* Clickable Name */}
+          <a
+            href={member.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <h3 className="text-[1.35rem] font-bold text-white leading-tight tracking-tight uppercase transition-all duration-300 active:scale-95">
+              {member.name}
+            </h3>
+          </a>
+
           <p className="text-[1rem] text-white mt-3 font-semibold leading-relaxed uppercase tracking-[0.08em] drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] font-['Orbitron']">
             {member.role}
           </p>
@@ -159,7 +188,6 @@ export default function Leadership() {
   useEffect(() => {
     setIsMounted(true);
 
-    // Phone only layout (<768px)
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
 
     checkMobile();
@@ -198,7 +226,72 @@ export default function Leadership() {
             ))}
           </div>
         ) : (
-          <LanyardScene members={TEAM_MEMBERS} />
+          <div className="flex flex-col items-center">
+            <LanyardScene members={TEAM_MEMBERS} />
+
+            
+
+{/* LinkedIn Buttons */}
+<div className="w-full max-w-8xl -mt-20 pb-20 flex flex-wrap justify-center gap-5 relative z-20">
+  {TEAM_MEMBERS.map((member) => (
+    <a
+      key={member.name}
+      href={member.linkedin}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="
+        group
+        flex
+        items-center
+        rounded-full
+        overflow-hidden
+        bg-white/85
+        backdrop-blur-md
+        shadow-[0_8px_30px_rgba(0,0,0,0.18)]
+        transition-all
+        duration-300
+        hover:scale-105
+        hover:shadow-[0_0_30px_rgba(168,85,247,0.35)]
+      "
+    >
+      {/* LinkedIn Icon Circle */}
+      <div
+        className="
+          w-14
+          h-14
+          flex
+          items-center
+          justify-center
+          rounded-full
+          bg-[#2797cf]
+          shrink-0
+        "
+      >
+        <img
+          src={linkedinLogo}
+          alt="LinkedIn"
+          className="w-16 h-16 object-contain"
+        />
+      </div>
+
+      {/* Name */}
+      <div
+        className="
+          px-4
+          py-3
+          text-black
+          font-semibold
+          text-lg
+          tracking-wide
+          whitespace-nowrap
+        "
+      >
+        {member.name}
+      </div>
+    </a>
+  ))}
+</div>
+          </div>
         )}
       </div>
     </section>

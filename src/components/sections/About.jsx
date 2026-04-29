@@ -23,7 +23,7 @@ export default function About({ revealKey }) {
     <section
       id="about"
       ref={ref}
-      className="relative py-16 px-6 w-full mt-20"
+      className="relative pt-16 px-6 w-full mt-20"
     >
       <motion.h2
         initial={{ opacity: 0, y: 40 }}
