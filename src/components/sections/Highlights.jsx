@@ -68,9 +68,9 @@ export default function Highlights({ revealKey }) {
     <section id="highlights" ref={ref} className="relative w-full overflow-hidden mt-20">
 
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-purple-700/25 blur-[180px] rounded-full" />
-        <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] bg-purple-900/20 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-200px] right-[-100px] w-[500px] h-[500px] bg-violet-500/20 blur-[140px] rounded-full" />
+        <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-purple-700/10 sm:bg-purple-700/25 blur-[180px] rounded-full" />
+        <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] bg-purple-900/8 sm:bg-purple-900/20 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-200px] right-[-100px] w-[500px] h-[500px] bg-violet-500/8 sm:bg-violet-500/20 blur-[140px] rounded-full" />
         {[["8%","12%"],["15%","80%"],["30%","5%"],["45%","90%"],["22%","55%"],["60%","20%"]].map(([top,left],i) => (
           <div key={i} style={{top,left}} className="absolute w-1 h-1 bg-purple-300/40 rounded-full" />
         ))}
@@ -109,8 +109,6 @@ export default function Highlights({ revealKey }) {
           ))}
         </div>
 
-        
-
         <motion.div {...anim(0.9)} className="mt-12 max-w-2xl mx-auto">
           <div className="flex items-stretch rounded-2xl overflow-hidden" style={{
             background: "linear-gradient(135deg,rgba(109,40,217,0.18),rgba(88,28,135,0.10))",
@@ -138,8 +136,12 @@ export default function Highlights({ revealKey }) {
       </motion.div>
 
       <div className="relative z-10">
-        <div className="absolute inset-0 pointer-events-none" style={{
-          background: "radial-gradient(ellipse 65% 80% at 50% 30%,rgba(124,58,237,0.38),rgba(88,28,135,0.18) 50%,transparent 80%)",
+        <div className="absolute inset-0 pointer-events-none sm:block" style={{
+          background: "radial-gradient(ellipse 65% 80% at 50% 30%,rgba(124,58,237,0.20),rgba(88,28,135,0.10) 50%,transparent 80%)",
+          filter: "blur(12px)",
+        }} />
+        <div className="absolute inset-0 pointer-events-none hidden sm:block" style={{
+          background: "radial-gradient(ellipse 65% 80% at 50% 30%,rgba(124,58,237,0.18),transparent 80%)",
           filter: "blur(12px)",
         }} />
         <motion.div {...anim(1.0)} className="relative text-center pt-14 pb-8 px-4">
