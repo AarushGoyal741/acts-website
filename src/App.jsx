@@ -5,8 +5,7 @@ import Navbar from "./components/layout/Navbar";
 import Background from "./components/backgrounds/Background";
 import ScrollToTop from "./components/layout/ScrollToTop";
 
-import BirdFlockReveal from "./components/reveal/BirdFlockReveal";
-import BlackReveal from "./components/reveal/BlackReveal";
+import LetterVortexReveal from "./components/reveal/LetterVortexReveal";
 
 import { RevealProvider } from "./context/RevealContext";
 
@@ -37,8 +36,12 @@ export default function App() {
 
       <Background />
 
-      <BirdFlockReveal key={`bird-${revealKey}`} revealDone={revealDone} />
-      <BlackReveal key={`black-${revealKey}`} revealDone={revealDone} setRevealDone={setRevealDone} />
+      {!revealDone && (
+        <LetterVortexReveal
+          key={`vortex-${revealKey}`}
+          setRevealDone={setRevealDone}
+        />
+      )}
 
       <Navbar revealDone={revealDone} />
 

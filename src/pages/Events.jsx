@@ -657,7 +657,7 @@ export default function EventsPage() {
         >
           {/* Ribbon — bottom-left, 28deg, shorter */}
           <div
-            className="absolute bottom-8 -left-44 w-[420px] pointer-events-none z-0"
+            className="absolute bottom-10 -left-38 w-[420px] pointer-events-none z-0"
             style={{ transform: "rotate(28deg)", transformOrigin: "left bottom" }}
           >
             {/* Torn top edge */}
@@ -668,12 +668,12 @@ export default function EventsPage() {
               />
             </svg>
             <div className="relative bg-[#181818] flex items-center overflow-hidden" style={{ height: "52px" }}>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/[0.04] via-transparent to-black/20" />
+              <div className="absolute inset-0 bg-[#141414]/20" />
               <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/40 to-transparent" />
               <div className="flex items-center gap-5 px-3 whitespace-nowrap select-none">
                 {[...Array(5)].map((_, i) => (
                   <div key={i} className="flex items-center gap-3">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.38)" strokeWidth="0.9" className="shrink-0">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.98)" strokeWidth="0.9" className="shrink-0">
                       <circle cx="12" cy="12" r="10"/>
                       <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                       <path d="M12 2v20"/>
@@ -694,7 +694,7 @@ export default function EventsPage() {
 
           {/* Ribbon — bottom-right, 36deg, longer */}
           <div
-            className="absolute bottom-6 -right-56 w-[520px] pointer-events-none z-0"
+            className="absolute bottom-36 -right-40 w-[520px] pointer-events-none z-0 "
             style={{ transform: "rotate(-36deg)", transformOrigin: "right bottom" }}
           >
             {/* Torn top edge */}
@@ -704,13 +704,13 @@ export default function EventsPage() {
                 fill="#141414"
               />
             </svg>
-            <div className="relative bg-[#141414] flex items-center overflow-hidden" style={{ height: "56px" }}>
-              <div className="absolute inset-0 bg-gradient-to-l from-white/[0.04] via-transparent to-black/20" />
+            <div className="relative bg-[#141414] flex items-center overflow-hidden " style={{ height: "56px" }}>
+              <div className="absolute inset-0 bg-[#141414]/20" />
               <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black/40 to-transparent" />
               <div className="flex items-center gap-6 px-3 whitespace-nowrap select-none">
                 {[...Array(6)].map((_, i) => (
                   <div key={i} className="flex items-center gap-3">
-                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.32)" strokeWidth="0.9" className="shrink-0">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.52)" strokeWidth="0.9" className="shrink-0">
                       <circle cx="12" cy="12" r="10"/>
                       <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                       <path d="M12 2v20"/>
