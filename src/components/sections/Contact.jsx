@@ -99,7 +99,7 @@ export default function Contact() {
             <div className="space-y-1.5 text-white/60 text-sm">
               <GlowLink to="/">Home</GlowLink>
               <GlowLink to="/highlights">Highlights</GlowLink>
-              <GlowLink to="/about">About</GlowLink>
+              
               <GlowLink to="/team">Team</GlowLink>
               <GlowLink to="/events">Events</GlowLink>
               <GlowLink to="/faq">FAQ</GlowLink>
