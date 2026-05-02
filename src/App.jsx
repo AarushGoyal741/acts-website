@@ -5,7 +5,7 @@ import Navbar from "./components/layout/Navbar";
 import Background from "./components/backgrounds/Background";
 import ScrollToTop from "./components/layout/ScrollToTop";
 
-import LetterVortexReveal from "./components/reveal/LetterVortexReveal";
+import LetterVortexReveal from "./components/reveal/Lettervortexreveal";
 
 import { RevealProvider } from "./context/RevealContext";
 
