@@ -43,11 +43,23 @@ const stats = [
   { value: "2022–2025", label: "Our Journey",      icon: <GradIcon id="g3"><rect x="3" y="4" width="18" height="18" rx="2" stroke="url(#g3)"/><line x1="16" y1="2" x2="16" y2="6" stroke="url(#g3)"/><line x1="8" y1="2" x2="8" y2="6" stroke="url(#g3)"/><line x1="3" y1="10" x2="21" y2="10" stroke="url(#g3)"/></GradIcon> },
 ];
 
+// ── Images ────────────────────────────────────────────────────────────────────
+// img1–img5: local assets
+// img6–img10: Unsplash placeholders — when you have the real files, replace each
+//   URL with:  import img6 from "../../assets/images/img6.png"  etc.
 const images = [
-  { src: img1, alt: "ACTS Event" }, { src: img2, alt: "Workshop" },
-  { src: img3, alt: "Hackathon" },  { src: img4, alt: "Team Activity" },
-  { src: img5, alt: "Seminar" },
+  { src: img1,                                                                       alt: "ACTS Event" },
+  { src: img2,                                                                       alt: "Workshop" },
+  { src: img3,                                                                       alt: "Hackathon" },
+  { src: img4,                                                                       alt: "Team Activity" },
+  { src: img5,                                                                       alt: "Seminar" },
+  { src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80", alt: "Tech Talk" },
+  { src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80", alt: "Collaboration" },
+  { src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80", alt: "Presentation" },
+  { src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80", alt: "Team Meeting" },
+  { src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80", alt: "Workshop Session" },
 ];
+// ─────────────────────────────────────────────────────────────────────────────
 
 export default function Highlights({ revealKey }) {
   const revealDone = useReveal();
