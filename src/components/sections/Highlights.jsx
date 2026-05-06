@@ -8,6 +8,24 @@ import img2 from "../../assets/images/img2.png";
 import img3 from "../../assets/images/img3.png";
 import img4 from "../../assets/images/img4.png";
 import img5 from "../../assets/images/img5.png";
+import img6 from "../../assets/images/img6.png";
+import img7 from "../../assets/images/img7.png";
+import img8 from "../../assets/images/img8.png";
+import img9 from "../../assets/images/img9.png";
+import img10 from "../../assets/images/img10.png";
+import img11 from "../../assets/images/img11.png";
+import img12 from "../../assets/images/img12.png";
+import img13 from "../../assets/images/img13.png";
+import img14 from "../../assets/images/img14.png";
+import img15 from "../../assets/images/img15.png";
+import img16 from "../../assets/images/img16.png";
+import img17 from "../../assets/images/img17.png";
+import img18 from "../../assets/images/img18.png";
+import img19 from "../../assets/images/img19.png";
+import img20 from "../../assets/images/img20.png";
+import img21 from "../../assets/images/img21.png";
+import img22 from "../../assets/images/img22.png";
+import img23 from "../../assets/images/img23.png";
 
 const Icon = ({ size = 13, children }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">{children}</svg>
@@ -48,16 +66,28 @@ const stats = [
 // img6–img10: Unsplash placeholders — when you have the real files, replace each
 //   URL with:  import img6 from "../../assets/images/img6.png"  etc.
 const images = [
-  { src: img1,                                                                       alt: "ACTS Event" },
-  { src: img2,                                                                       alt: "Workshop" },
-  { src: img3,                                                                       alt: "Hackathon" },
-  { src: img4,                                                                       alt: "Team Activity" },
-  { src: img5,                                                                       alt: "Seminar" },
-  { src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80", alt: "Tech Talk" },
-  { src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80", alt: "Collaboration" },
-  { src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80", alt: "Presentation" },
-  { src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80", alt: "Team Meeting" },
-  { src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80", alt: "Workshop Session" },
+  { src: img1, alt: "ACTS Event" },
+  { src: img2, alt: "Workshop" },
+  { src: img3, alt: "Hackathon" },
+  { src: img4, alt: "Team Activity" },
+  { src: img5, alt: "Seminar" },
+  { src: img6, alt: "Tech Talk" },
+  { src: img7, alt: "Collaboration" },
+  { src: img8, alt: "Presentation" },
+  { src: img9, alt: "Team Meeting" },
+  { src: img10, alt: "Workshop Session" },
+  { src: img11, alt: "Workshop Session" },
+  { src: img12, alt: "Workshop Session" },
+  { src: img14, alt: "Workshop Session" },
+  { src: img15, alt: "Workshop Session" },
+  { src: img16, alt: "Workshop Session" },
+  { src: img17, alt: "Workshop Session" },
+  { src: img18, alt: "Workshop Session" },
+  { src: img19, alt: "Workshop Session" },
+  { src: img20, alt: "Workshop Session" },
+  { src: img21, alt: "Workshop Session" },
+  { src: img22, alt: "Workshop Session" },
+  { src: img23, alt: "Workshop Session" },
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
